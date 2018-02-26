@@ -1,0 +1,7 @@
+
+<div *ngIf ='mostrarVersos'>
+	<p *ngFor = 'let verso of versos'>
+		{{verso}}
+ 	</p>
+</div>
+<input type="button" (click)="onMostrarClick()" value="Mostrar">
