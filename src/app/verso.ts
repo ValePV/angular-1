@@ -1,4 +1,4 @@
 export class Verso {
-	contenido : string = "";
-	nombreJugador : string = "";
+    contenido:string = "";
+    nombreJugador:string = "";
 }

@@ -1,8 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<input type="button" value="Login" (click)="onLoginClick()">
+<input type="button" value="Registrar" (click)="onRegisterClick()">
+<app-register *ngIf="modalRegister"></app-register>
+<app-login-modal *ngIf="modalLogin"></app-login-modal>
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+    <h1 *ngIf="authService.user | async">
+        Welcome {{(authService.user | async)?.email}} to {{ title }}!
+    </h1>
+    <h1 *ngIf="!authService.user | async">
+        Welcome to {{ title }}!
+    </h1>
 </div>
-<app-poem [id]=0 [mostrarVersos] = "poemas[0]" (onMostrar)="onPoemMostrar($event)"></app-poem>
-
+<app-poem [id]=0 [mostrarVersos]="poemas[0]" (onMostrar)="onPoemMostrar($event)"></app-poem>

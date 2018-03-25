@@ -8,21 +8,18 @@ import { Verso } from '../verso';
   styleUrls: ['./verso-form.component.css']
 })
 export class VersoFormComponent implements OnInit {
-  
-  @Input() verso : Verso = new Verso();
+  @Input() verso:Verso = new Verso();
   @Output() submit = new EventEmitter<Verso>()
-  versoForm: FormGroup;
-  
+  versoForm:FormGroup;
 
-  constructor(private fb:FormBuilder) { 
+  constructor(private fb:FormBuilder) {
     this.createForm();
   }
 
   ngOnInit() {
   }
 
-  ngOnChanges() {
-
+  ngOnChanges(){
 
   }
 
@@ -34,22 +31,18 @@ export class VersoFormComponent implements OnInit {
       this.submit.emit(newVerso);
       this.versoForm.reset();
     }
-    
   }
 
-  createForm(){ 
+  createForm(){
     this.versoForm = this.fb.group({
       jugador : [this.verso.nombreJugador, [Validators.required, Validators.minLength(4)]],
       contenido : [this.verso.contenido],
-      indice : [0, Validators.min(0)]
-      
+      indice:[0, Validators.min(0)]
     });
 
-    this.versoForm.valueChanges.subscribe(() => {
+    this.versoForm.valueChanges.subscribe(()=>{
       this.verso.nombreJugador = this.versoForm.value.jugador;
       this.verso.contenido = this.versoForm.value.contenido;
-    })
-
+    });
   }
 }
-
